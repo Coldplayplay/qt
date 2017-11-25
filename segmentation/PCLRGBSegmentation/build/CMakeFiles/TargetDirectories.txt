@@ -1,0 +1,3 @@
+/home/cbc/pcl_without_ros/qt/segmentation/PCLRGBSegmentation/build/CMakeFiles/rebuild_cache.dir
+/home/cbc/pcl_without_ros/qt/segmentation/PCLRGBSegmentation/build/CMakeFiles/edit_cache.dir
+/home/cbc/pcl_without_ros/qt/segmentation/PCLRGBSegmentation/build/CMakeFiles/main.dir

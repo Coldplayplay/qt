@@ -1,0 +1,3 @@
+# Hashes of file build rules.
+6b3912e1c1170b0ca5fad454d8e06ad2 src/moc_manual_registration.cpp
+877b0bb43b5a0d8e04f22752e1925453 ui_manual_registration.h

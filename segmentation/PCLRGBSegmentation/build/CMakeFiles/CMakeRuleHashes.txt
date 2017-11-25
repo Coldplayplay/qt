@@ -1,0 +1,3 @@
+# Hashes of file build rules.
+ab4064e47b793adc39867bede751914c src/moc_rgbsegmentation.cpp
+82275c5318e97d24461dd35def220ae5 ui_rgbsegmentation.h
