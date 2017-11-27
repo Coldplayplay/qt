@@ -10,6 +10,8 @@
 #include <pcl/point_types.h>
 #include <pcl/io/pcd_io.h>
 #include <pcl/io/ply_io.h>
+#include <pcl/common/common.h>
+#include <pcl/common/pca.h>
 #include <pcl/search/search.h>
 #include <pcl/search/kdtree.h>
 #include <pcl/filters/passthrough.h>
@@ -55,8 +57,12 @@ protected:
     PointCloudT::Ptr cloudin;
     PointCloudT::Ptr cloudout;
     vector <pcl::PointIndices> clusters;
+    int pre_clusters_num;
     boost::shared_ptr<pcl::visualization::PCLVisualizer> viewer;   
     int v1,v2;
+    PointT min; 
+    PointT max;
+    int flag; 
 
     int DistanceThreshold;
     int PointColorThreshold;
