@@ -57,12 +57,13 @@ protected:
     PointCloudT::Ptr cloudin;
     PointCloudT::Ptr cloudout;
     vector <pcl::PointIndices> clusters;
-    int pre_clusters_num;
-    boost::shared_ptr<pcl::visualization::PCLVisualizer> viewer;   
+    boost::shared_ptr<pcl::visualization::PCLVisualizer> viewer;
+    int pre_clusters_num;   
     int v1,v2;
+    int flag; 
+    
     PointT min; 
     PointT max;
-    int flag; 
 
     int DistanceThreshold;
     int PointColorThreshold;

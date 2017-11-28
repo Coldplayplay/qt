@@ -44,7 +44,7 @@
     <property name="geometry">
      <rect>
       <x>170</x>
-      <y>130</y>
+      <y>170</y>
       <width>89</width>
       <height>25</height>
      </rect>
@@ -57,13 +57,39 @@
     <property name="geometry">
      <rect>
       <x>30</x>
-      <y>130</y>
+      <y>170</y>
       <width>131</width>
       <height>17</height>
      </rect>
     </property>
     <property name="text">
      <string>RGBSegmentation</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_3">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>120</y>
+      <width>131</width>
+      <height>17</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Statistic Filter</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_sta">
+    <property name="geometry">
+     <rect>
+      <x>170</x>
+      <y>120</y>
+      <width>89</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>open</string>
     </property>
    </widget>
   </widget>

@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include "pclviewer.h"
 #include "rgbsegmentation.h"
+#include "statisticfilter.h"
 namespace Ui {
 class Global;
 }
@@ -18,12 +19,14 @@ public:
 
 public Q_SLOTS:
     void condButtonPressed();
+    void statisticButtonPressed();
     void segButtonPressed();
 
 
 private:
     Ui::Global *ui;
     PCLViewer *view;
+    StatisticFilter *statisFilter;
     RGBSegmentation *seg;
 };
 

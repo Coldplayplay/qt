@@ -151,13 +151,18 @@ void  RGBSegmentation::savesinglesButtonPressed()
 
     pcl::ExtractIndices<PointT> extract;    
     extract.setInputCloud (cloudin);
+    std::cerr << "PointCloud : " << cloudin->width * cloudin->height 
+       << " data points (" << pcl::getFieldsList (*cloudin) << ").";
     extract.setNegative (false);
     //for(vector<pcl::PointIndices>::const_iterator iter = clusters.cbegin(); iter!=clusters.cend(); iter++)
     //for(auto iter = clusters.cbegin())
     for(auto val:clusters)
     {
         pcl::PointIndices::Ptr tem (new pcl::PointIndices(val));//transform pcl::PointIndices to pcl::PointIndices::Ptr
-        extract.setIndices (tem);        
+        extract.setIndices (tem);
+
+        pcl::PointIndices tem1 = *tem;
+
         extract.filter (*cloudsingle);
         std::stringstream ss;
         ss << loadname <<"." << i << ".pcd";
@@ -188,11 +193,9 @@ void RGBSegmentation::segmentation()
     reg.setDistanceThreshold (DistanceThreshold);//参数是点的个数还是距离？  determine whether the point is neighbouring or not.
     reg.setPointColorThreshold (PointColorThreshold);//判断是不是一类，点云颜色之差的阈值
     reg.setRegionColorThreshold (RegionColorThreshold);//判断两类能不能合并的点云颜色之差的阈值
-    reg.setMinClusterSize (MinClusterSize);
-    
+    reg.setMinClusterSize (MinClusterSize);    
     reg.extract (clusters);
-    std::cout << "Number of clusters is equal to " << clusters.size() << std::endl; 
-  
+    std::cout << "Number of clusters is equal to " << clusters.size() << std::endl;   
  
     PointCloudT::Ptr colored_cloud = reg.getColoredCloud ();  
     PointCloudT::Ptr cloudsingle (new PointCloudT);
