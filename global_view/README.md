@@ -1,0 +1,3 @@
+global里的lccpSegmentation与segmentation里单独的版本有所区别。
+1.为了统一成pointXYZRGB的形式，修改了有些必须涉及PointXYZRGBA的部分。(超体素的中心点)
+2.主要是271行和277行的函数：addSupervoxelConnectionsToViewer

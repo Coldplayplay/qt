@@ -40,7 +40,7 @@
      <string>Conditional Filter</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_seg">
+   <widget class="QPushButton" name="pushButton_rgb">
     <property name="geometry">
      <rect>
       <x>170</x>
@@ -84,6 +84,32 @@
      <rect>
       <x>170</x>
       <y>120</y>
+      <width>89</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>open</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_4">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>220</y>
+      <width>131</width>
+      <height>17</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>LCCPSegmentation</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_lccp">
+    <property name="geometry">
+     <rect>
+      <x>170</x>
+      <y>220</y>
       <width>89</width>
       <height>25</height>
      </rect>

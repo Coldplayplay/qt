@@ -10,15 +10,16 @@ Global::Global(QWidget *parent) :
     ui->setupUi(this);
     connect(ui->pushButton_cond, SIGNAL(clicked(bool)), this, SLOT(condButtonPressed()));
     connect(ui->pushButton_sta, SIGNAL(clicked(bool)), this, SLOT(statisticButtonPressed()));
-    connect(ui->pushButton_seg, SIGNAL(clicked(bool)), this, SLOT(segButtonPressed()));
+    connect(ui->pushButton_rgb, SIGNAL(clicked(bool)), this, SLOT(rgbButtonPressed()));
+    connect(ui->pushButton_lccp, SIGNAL(clicked(bool)), this, SLOT(lccpButtonPressed()));
 }
 
 
 void Global::condButtonPressed()
 {
 
-    view = new PCLViewer(this) ;
-    view->show();
+    cond = new PCLViewer(this) ;
+    cond->show();
 
 }
 
@@ -28,11 +29,20 @@ void Global::statisticButtonPressed()
     statisFilter->show();
 }
 
-void Global::segButtonPressed()
+void Global::rgbButtonPressed()
 {
 
-    seg = new RGBSegmentation(this) ;
-    seg->show();
+    rgbSeg = new RGBSegmentation(this) ;
+    rgbSeg->show();
+
+}
+
+
+void Global::lccpButtonPressed()
+{
+
+    lccpSeg = new LCCPSeg(this) ;
+    lccpSeg->show();
 
 }
 

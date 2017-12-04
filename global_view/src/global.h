@@ -2,9 +2,11 @@
 #define GLOBAL_H
 
 #include <QMainWindow>
-#include "pclviewer.h"
-#include "rgbsegmentation.h"
+#include "pclviewer.h"//conditional filtering
 #include "statisticfilter.h"
+#include "rgbsegmentation.h"
+#include "lccpseg.h"
+
 namespace Ui {
 class Global;
 }
@@ -20,14 +22,16 @@ public:
 public Q_SLOTS:
     void condButtonPressed();
     void statisticButtonPressed();
-    void segButtonPressed();
-
+    void rgbButtonPressed();
+    void lccpButtonPressed();
 
 private:
     Ui::Global *ui;
-    PCLViewer *view;
+    PCLViewer *cond;
     StatisticFilter *statisFilter;
-    RGBSegmentation *seg;
+    RGBSegmentation *rgbSeg;
+    LCCPSeg *lccpSeg;
+    
 };
 
 #endif // GLOBAL_H

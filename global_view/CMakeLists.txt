@@ -9,9 +9,9 @@ include_directories (${PCL_INCLUDE_DIRS})
 link_directories    (${PCL_LIBRARY_DIRS})
 add_definitions     (${PCL_DEFINITIONS})
 
-set  (project_SOURCES src/main.cpp 	src/global.cpp 		src/rgbsegmentation.cpp src/pclviewer.cpp 	src/statisticfilter.cpp)
-set  (project_HEADERS 			src/global.h 		src/rgbsegmentation.h 	src/pclviewer.h 	src/statisticfilter.h)
-set  (project_FORMS   			src/global.ui 		src/rgbsegmentation.ui 	src/pclviewer.ui 	src/statisticfilter.ui)
+set  (project_SOURCES src/main.cpp 	src/global.cpp	src/pclviewer.cpp	src/statisticfilter.cpp  src/rgbsegmentation.cpp   src/lccpseg.cpp)
+set  (project_HEADERS 			src/global.h 	src/pclviewer.h		src/statisticfilter.h	 src/rgbsegmentation.h     src/lccpseg.h)
+set  (project_FORMS   			src/global.ui 	src/pclviewer.ui	src/statisticfilter.ui   src/rgbsegmentation.ui    src/lccpseg.ui)
 #set  (VTK_LIBRARIES   vtkRendering vtkGraphics vtkHybrid QVTK)
 
 QT5_WRAP_CPP (project_HEADERS_MOC   ${project_HEADERS})
