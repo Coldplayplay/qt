@@ -337,13 +337,13 @@ void LCCPSeg::saveButtonPressed()
 
       int return_status;
       if (filename.endsWith (".pcd", Qt::CaseInsensitive))
-        return_status = pcl::io::savePCDFileBinary (filename.toStdString (), *lccp_labeled_cloud);
+        return_status = pcl::io::savePCDFile (filename.toStdString (), *lccp_labeled_cloud);
       else if (filename.endsWith (".ply", Qt::CaseInsensitive))
         return_status = pcl::io::savePLYFileBinary (filename.toStdString (), *lccp_labeled_cloud);
       else
       {
         filename.append(".pcd");
-        return_status = pcl::io::savePCDFileBinary (filename.toStdString (), *lccp_labeled_cloud);
+        return_status = pcl::io::savePCDFile (filename.toStdString (), *lccp_labeled_cloud);
       }
 
       if (return_status != 0)

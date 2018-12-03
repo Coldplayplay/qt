@@ -14,6 +14,7 @@
 #include <pcl/point_types.h>
 #include <pcl/io/pcd_io.h>
 #include <pcl/io/ply_io.h>
+#include <pcl/common/transforms.h>
 #include <pcl/filters/passthrough.h>
 #include <pcl/filters/voxel_grid.h>
 #include <pcl/filters/statistical_outlier_removal.h>
@@ -43,15 +44,16 @@ public:
   ~PCLViewer ();
   void viewPair();
   void initial();
+  Eigen::Matrix3d euler2RotationMatrix(double roll, double pitch, double yaw);
 
 public Q_SLOTS:  
   
-  void updateLabelValue1(int value);
-  void updateLabelValue2(int value);
-  void updateLabelValue3(int value);
-  void updateLabelValue4(int value);
-  void updateLabelValue5(int value);
-  void updateLabelValue6(int value);  
+  void  updateLabelValue1(int value);
+  void  updateLabelValue2(int value);
+  void  updateLabelValue3(int value);
+  void  updateLabelValue4(int value);
+  void  updateLabelValue5(int value);
+  void  updateLabelValue6(int value);  
 
   void  x1SliderValueChanged (int value);
   void  x2SliderValueChanged (int value);
@@ -59,10 +61,19 @@ public Q_SLOTS:
   void  y2SliderValueChanged (int value);
   void  z1SliderValueChanged (int value);
   void  z2SliderValueChanged (int value);
+
+  void  rSliderValueChanged (int value);
+  void  pSliderValueChanged (int value);
+  void  ySliderValueChanged (int value);
+
+  void  r_updateLabelValue(int value);
+  void  p_updateLabelValue(int value);
+  void  y_updateLabelValue(int value);
   
   void  saveButtonPressed ();  
   void	loadButtonPressed ();
   void  conditFilter();
+  void  rotate_UI();
 
   //void  voxelFilter(cloudin,cloudout,leafsize);
 
@@ -74,13 +85,9 @@ protected:
   PointCloudT::Ptr cloudout;  
   PointCloudT::Ptr temp;
 
-  double x1;
-  double x2;
-  double y1;
-  double y2;
-  double z1;
-  double z2;
-//unsigned double leafsize;
+  double x1,x2,y1,y2,z1,z2;//conditional filter params
+  //unsigned double leafsize; 
+  double roll,pitch,yaw;//RPY变量
 
 private:
   Ui::PCLViewer *ui;

@@ -1,0 +1,11 @@
+{
+    "files.associations": {
+        "*.tex": "latex",
+        "type_traits": "cpp",
+        "core": "cpp",
+        "chrono": "cpp",
+        "ratio": "cpp",
+        "system_error": "cpp",
+        "array": "cpp"
+    }
+}

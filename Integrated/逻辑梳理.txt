@@ -1,0 +1,10 @@
+需求分析：
+四部分的功能可以接连使用
+1.cloudout  cloudout
+2.cloudout  cloudout
+3.cloudout  cloudout
+再添加撤销的功能，可以无限次撤销，一直到一开始的状态
+
+
+
+background-image: url(:/images/cancel.png);

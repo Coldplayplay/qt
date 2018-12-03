@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1980</width>
-    <height>800</height>
+    <height>1200</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -31,8 +31,8 @@
      <rect>
       <x>670</x>
       <y>20</y>
-      <width>1100</width>
-      <height>640</height>
+      <width>1200</width>
+      <height>900</height>
      </rect>
     </property>
    </widget>
@@ -46,10 +46,10 @@
      </rect>
     </property>
     <property name="minimum">
-     <number>-200</number>
+     <number>-400</number>
     </property>
     <property name="maximum">
-     <number>200</number>
+     <number>400</number>
     </property>
     <property name="singleStep">
      <number>1</number>
@@ -71,10 +71,10 @@
      </rect>
     </property>
     <property name="minimum">
-     <number>-200</number>
+     <number>-400</number>
     </property>
     <property name="maximum">
-     <number>200</number>
+     <number>400</number>
     </property>
     <property name="value">
      <number>-40</number>
@@ -93,10 +93,10 @@
      </rect>
     </property>
     <property name="minimum">
-     <number>-200</number>
+     <number>-400</number>
     </property>
     <property name="maximum">
-     <number>200</number>
+     <number>400</number>
     </property>
     <property name="value">
      <number>0</number>
@@ -171,8 +171,8 @@
    <widget class="QPushButton" name="pushButton_save">
     <property name="geometry">
      <rect>
-      <x>390</x>
-      <y>490</y>
+      <x>370</x>
+      <y>810</y>
       <width>181</width>
       <height>61</height>
      </rect>
@@ -191,10 +191,10 @@
      </rect>
     </property>
     <property name="minimum">
-     <number>-200</number>
+     <number>-400</number>
     </property>
     <property name="maximum">
-     <number>200</number>
+     <number>400</number>
     </property>
     <property name="value">
      <number>50</number>
@@ -255,10 +255,10 @@
      </rect>
     </property>
     <property name="minimum">
-     <number>-200</number>
+     <number>-400</number>
     </property>
     <property name="maximum">
-     <number>200</number>
+     <number>400</number>
     </property>
     <property name="value">
      <number>25</number>
@@ -298,10 +298,10 @@
      </rect>
     </property>
     <property name="minimum">
-     <number>-200</number>
+     <number>-400</number>
     </property>
     <property name="maximum">
-     <number>200</number>
+     <number>400</number>
     </property>
     <property name="value">
      <number>150</number>
@@ -381,10 +381,10 @@
      </rect>
     </property>
     <property name="minimum">
-     <number>-200</number>
+     <number>-400</number>
     </property>
     <property name="maximum">
-     <number>200</number>
+     <number>400</number>
     </property>
     <property name="singleStep">
      <number>1</number>
@@ -403,10 +403,10 @@
      </rect>
     </property>
     <property name="minimum">
-     <number>-200</number>
+     <number>-400</number>
     </property>
     <property name="maximum">
-     <number>200</number>
+     <number>400</number>
     </property>
     <property name="value">
      <number>-40</number>
@@ -422,10 +422,10 @@
      </rect>
     </property>
     <property name="minimum">
-     <number>-200</number>
+     <number>-400</number>
     </property>
     <property name="maximum">
-     <number>200</number>
+     <number>400</number>
     </property>
    </widget>
    <widget class="QSpinBox" name="spinBox_z2">
@@ -438,10 +438,10 @@
      </rect>
     </property>
     <property name="minimum">
-     <number>-200</number>
+     <number>-400</number>
     </property>
     <property name="maximum">
-     <number>200</number>
+     <number>400</number>
     </property>
     <property name="value">
      <number>150</number>
@@ -457,10 +457,10 @@
      </rect>
     </property>
     <property name="minimum">
-     <number>-200</number>
+     <number>-400</number>
     </property>
     <property name="maximum">
-     <number>200</number>
+     <number>400</number>
     </property>
     <property name="value">
      <number>25</number>
@@ -476,10 +476,10 @@
      </rect>
     </property>
     <property name="minimum">
-     <number>-200</number>
+     <number>-400</number>
     </property>
     <property name="maximum">
-     <number>200</number>
+     <number>400</number>
     </property>
     <property name="value">
      <number>50</number>
@@ -566,14 +566,278 @@
    <widget class="QPushButton" name="pushButton_load">
     <property name="geometry">
      <rect>
-      <x>70</x>
-      <y>490</y>
+      <x>30</x>
+      <y>810</y>
       <width>181</width>
       <height>61</height>
      </rect>
     </property>
     <property name="text">
      <string>load file</string>
+    </property>
+   </widget>
+   <widget class="QSlider" name="horizontalSlider_r">
+    <property name="geometry">
+     <rect>
+      <x>50</x>
+      <y>530</y>
+      <width>160</width>
+      <height>29</height>
+     </rect>
+    </property>
+    <property name="minimum">
+     <number>-360</number>
+    </property>
+    <property name="maximum">
+     <number>360</number>
+    </property>
+    <property name="singleStep">
+     <number>1</number>
+    </property>
+    <property name="value">
+     <number>0</number>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Horizontal</enum>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_r">
+    <property name="geometry">
+     <rect>
+      <x>330</x>
+      <y>530</y>
+      <width>41</width>
+      <height>17</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>-0.5</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_17">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>530</y>
+      <width>21</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>16</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>R</string>
+    </property>
+   </widget>
+   <widget class="QSpinBox" name="spinBox_r">
+    <property name="geometry">
+     <rect>
+      <x>220</x>
+      <y>530</y>
+      <width>71</width>
+      <height>27</height>
+     </rect>
+    </property>
+    <property name="minimum">
+     <number>-360</number>
+    </property>
+    <property name="maximum">
+     <number>360</number>
+    </property>
+    <property name="singleStep">
+     <number>1</number>
+    </property>
+    <property name="value">
+     <number>0</number>
+    </property>
+   </widget>
+   <widget class="QSlider" name="horizontalSlider_p">
+    <property name="geometry">
+     <rect>
+      <x>50</x>
+      <y>580</y>
+      <width>160</width>
+      <height>29</height>
+     </rect>
+    </property>
+    <property name="minimum">
+     <number>-360</number>
+    </property>
+    <property name="maximum">
+     <number>360</number>
+    </property>
+    <property name="singleStep">
+     <number>1</number>
+    </property>
+    <property name="value">
+     <number>0</number>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Horizontal</enum>
+    </property>
+   </widget>
+   <widget class="QSpinBox" name="spinBox_p">
+    <property name="geometry">
+     <rect>
+      <x>220</x>
+      <y>580</y>
+      <width>71</width>
+      <height>27</height>
+     </rect>
+    </property>
+    <property name="minimum">
+     <number>-360</number>
+    </property>
+    <property name="maximum">
+     <number>360</number>
+    </property>
+    <property name="singleStep">
+     <number>1</number>
+    </property>
+    <property name="value">
+     <number>0</number>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_p">
+    <property name="geometry">
+     <rect>
+      <x>330</x>
+      <y>580</y>
+      <width>41</width>
+      <height>17</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>-0.5</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_19">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>580</y>
+      <width>21</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>16</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>P</string>
+    </property>
+   </widget>
+   <widget class="QSlider" name="horizontalSlider_y">
+    <property name="geometry">
+     <rect>
+      <x>50</x>
+      <y>630</y>
+      <width>160</width>
+      <height>29</height>
+     </rect>
+    </property>
+    <property name="minimum">
+     <number>-360</number>
+    </property>
+    <property name="maximum">
+     <number>360</number>
+    </property>
+    <property name="singleStep">
+     <number>1</number>
+    </property>
+    <property name="value">
+     <number>0</number>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Horizontal</enum>
+    </property>
+   </widget>
+   <widget class="QSpinBox" name="spinBox_y">
+    <property name="geometry">
+     <rect>
+      <x>220</x>
+      <y>630</y>
+      <width>71</width>
+      <height>27</height>
+     </rect>
+    </property>
+    <property name="minimum">
+     <number>-360</number>
+    </property>
+    <property name="maximum">
+     <number>360</number>
+    </property>
+    <property name="singleStep">
+     <number>1</number>
+    </property>
+    <property name="value">
+     <number>0</number>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_y">
+    <property name="geometry">
+     <rect>
+      <x>330</x>
+      <y>630</y>
+      <width>41</width>
+      <height>17</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>-0.5</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_21">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>630</y>
+      <width>21</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>16</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>Y</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_15">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>480</y>
+      <width>81</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>16</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>RPY</string>
     </property>
    </widget>
   </widget>
@@ -776,6 +1040,102 @@
     <hint type="destinationlabel">
      <x>460</x>
      <y>340</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>horizontalSlider_r</sender>
+   <signal>sliderMoved(int)</signal>
+   <receiver>spinBox_r</receiver>
+   <slot>setValue(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>193</x>
+     <y>543</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>244</x>
+     <y>544</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>horizontalSlider_p</sender>
+   <signal>sliderMoved(int)</signal>
+   <receiver>spinBox_p</receiver>
+   <slot>setValue(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>173</x>
+     <y>592</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>250</x>
+     <y>592</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>horizontalSlider_y</sender>
+   <signal>sliderMoved(int)</signal>
+   <receiver>spinBox_y</receiver>
+   <slot>setValue(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>171</x>
+     <y>642</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>233</x>
+     <y>645</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>spinBox_r</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>horizontalSlider_r</receiver>
+   <slot>setValue(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>248</x>
+     <y>538</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>171</x>
+     <y>544</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>spinBox_p</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>horizontalSlider_p</receiver>
+   <slot>setValue(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>242</x>
+     <y>595</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>165</x>
+     <y>589</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>spinBox_y</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>horizontalSlider_y</receiver>
+   <slot>setValue(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>244</x>
+     <y>640</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>172</x>
+     <y>646</y>
     </hint>
    </hints>
   </connection>

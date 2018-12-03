@@ -11,12 +11,14 @@ int main()
           std::cout <<"1" <<std::endl;
           return -1;
       }
+      
       PyRun_SimpleString("import sys");
-      int argc = 2;
-      char *argv[2];
-      argv[0] = "/home/cbc/DL/PointNet/pointnet/sem_seg/model.py";
-      argv[1] = "/home/cbc/pcl_without_ros/qt/test_python/test.py";
+      int argc = 1;
+      char *argv[1];
+      argv[0] = "/home/cbc/DL/PointNet/pointnet/sem_seg/batch_inference.py";
+      
       PySys_SetArgv(argc, argv);
+      
 
 /*
       //python3的用法
@@ -32,16 +34,16 @@ int main()
           std::cout <<"3" <<std::endl;
           return -1;
       }
-  */    
+*/    
    
    
-      if(PyRun_SimpleString("execfile('/home/cbc/DL/PointNet/pointnet/sem_seg/model.py')") == NULL)
+      if(PyRun_SimpleString("execfile('/home/cbc/DL/PointNet/pointnet/sem_seg/batch_inference.py')") == NULL)
       {
-          std::cout <<"3" <<std::endl;
+          std::cout <<"Success." <<std::endl;
           return -1;
       }
 
-      std::cout<<"mistake."<<endl;
+      std::cout<<"Mistake."<<endl;
       Py_Finalize();
       return 0;
 }

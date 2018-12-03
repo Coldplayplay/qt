@@ -1,28 +1,29 @@
-#include "statisticfilter.h"
-#include "../build/ui_statisticfilter.h"
+#include "voxelfilter.h"
+#include "../build/ui_voxelfilter.h"
 
-StatisticFilter::StatisticFilter(QWidget *parent) :
+VoxelFilter::VoxelFilter(QWidget *parent) :
     QMainWindow(parent),
-    ui(new Ui::StatisticFilter)
+    ui(new Ui::VoxelFilter)
 {
     ui->setupUi(this);
     this->setWindowTitle ("Statistic Filter");
     initial();
 
-    connect (ui->spinBox_2, SIGNAL (valueChanged (int)), this, SLOT (updateLabelValue(int)));
     connect (ui->spinBox_1, SIGNAL (valueChanged (int)), this, SLOT (valueChanged1(int)));
     connect (ui->spinBox_2, SIGNAL (valueChanged (int)), this, SLOT (valueChanged2(int)));
-    connect (ui->spinBox_1, SIGNAL(editingFinished()), this, SLOT (statisticFilter()));
-    connect (ui->spinBox_2, SIGNAL(editingFinished()), this, SLOT (statisticFilter()));
+    connect (ui->spinBox_3, SIGNAL (valueChanged (int)), this, SLOT (valueChanged3(int)));
+
+    connect (ui->pushButton_exect, SIGNAL(clicked()), this, SLOT (exectButtonPressed()));
     connect (ui->pushButton_save,  SIGNAL (clicked ()), this, SLOT (saveButtonPressed ()));
     connect (ui->pushButton_load,  SIGNAL (clicked ()), this, SLOT (loadButtonPressed()));
 
 }
 
-void StatisticFilter::initial()
+void VoxelFilter::initial()
 {
-  MeanK = 50;
-  StddevMulThresh = 0.4;
+  lx = 1.0;
+  ly = 1.0;
+  lz = 1.0;
   cloudin.reset (new PointCloudT); // Setup the cloud pointer
   cloudout.reset (new PointCloudT);
  // temp.reset(new PointCloudT);
@@ -49,7 +50,7 @@ void StatisticFilter::initial()
 
 
 
-void StatisticFilter::viewPair()
+void VoxelFilter::viewPair()
 {
   viewer->removePointCloud("v1");
   viewer->removePointCloud("v2");
@@ -64,25 +65,25 @@ void StatisticFilter::viewPair()
 
 }
 
-void StatisticFilter::statisticFilter()
+void VoxelFilter::exectButtonPressed()
 {
-    pcl::StatisticalOutlierRemoval<PointT> sor;
+    pcl::VoxelGrid<PointT> sor;
     sor.setInputCloud (cloudin);
-    sor.setMeanK (MeanK);
-    sor.setStddevMulThresh (StddevMulThresh);
+    sor.setLeafSize (lx, ly, lz);
     sor.filter (*cloudout);
 
+
     std::cout<<"离群点去除前，点云数目："<<cloudin->points.size()<<endl;
-    std::cout<<"离群点去除后，点云数目："<<cloudout->points.size()<<endl;    
+    std::cout<<"离群点去除后，点云数目："<<cloudout->points.size()<<endl;
 
     viewer->removePointCloud("v2");
-    PointCloudColorHandlerRGBField<PointT> rgb2(cloudout);    
-    viewer->addPointCloud<PointT>(cloudout, rgb2, "v2", v2);    
+    PointCloudColorHandlerRGBField<PointT> rgb2(cloudout);
+    viewer->addPointCloud<PointT>(cloudout, rgb2, "v2", v2);
     ui->qvtkWidget->update ();
 
 }
 
-void StatisticFilter::loadButtonPressed()
+void VoxelFilter::loadButtonPressed()
 {
   QString filename = QFileDialog::getOpenFileName (this, tr ("Open point cloud"), "/home/cbc/图片/", tr ("Point cloud data (*.pcd *.ply)"));
 
@@ -119,7 +120,7 @@ void StatisticFilter::loadButtonPressed()
 
 }
 
-void  StatisticFilter::saveButtonPressed ()
+void  VoxelFilter::saveButtonPressed ()
 {
   QString filename = QFileDialog::getSaveFileName(this, tr ("Open point cloud"), "/home/cbc/图片/", tr ("Point cloud data (*.pcd *.ply)"));
 
@@ -130,13 +131,13 @@ void  StatisticFilter::saveButtonPressed ()
 
   int return_status;
   if (filename.endsWith (".pcd", Qt::CaseInsensitive))
-    return_status = pcl::io::savePCDFile (filename.toStdString (), *cloudout);
+    return_status = pcl::io::savePCDFileBinary (filename.toStdString (), *cloudout);
   else if (filename.endsWith (".ply", Qt::CaseInsensitive))
-    return_status = pcl::io::savePLYFile(filename.toStdString (), *cloudout);
+    return_status = pcl::io::savePLYFileBinary (filename.toStdString (), *cloudout);
   else
   {
     filename.append(".pcd");
-    return_status = pcl::io::savePCDFile(filename.toStdString (), *cloudout);
+    return_status = pcl::io::savePCDFileBinary (filename.toStdString (), *cloudout);
   }
 
   if (return_status != 0)
@@ -146,24 +147,26 @@ void  StatisticFilter::saveButtonPressed ()
   }
 }
 
-void StatisticFilter::valueChanged1(int value)
+void VoxelFilter::valueChanged1(int value)
 {
-    MeanK = value;
+    lx = value/1000.0;
+    ui->label_num_1->setText(QString::number(lx, 'f', 3));//显示小数
 }
 
-void StatisticFilter::valueChanged2(int value)
+void VoxelFilter::valueChanged2(int value)
 {
-    StddevMulThresh = value/100.0;
+    ly = value/1000.0;
+    ui->label_num_2->setText(QString::number(ly, 'f', 3));//显示小数
 }
 
-//显示小数
-void StatisticFilter::updateLabelValue(int value)
+void VoxelFilter::valueChanged3(int value)
 {
-    double doublevalue = value/100.0;
-    ui->label_num->setText(QString::number(doublevalue, 'f', 2));
+    lz = value/1000.0;
+    ui->label_num_3->setText(QString::number(lz, 'f', 3));//显示小数
 }
 
-StatisticFilter::~StatisticFilter()
+
+VoxelFilter::~VoxelFilter()
 {
     delete ui;
 }

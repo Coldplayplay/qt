@@ -39,12 +39,28 @@ PCLViewer::PCLViewer (QWidget *parent) :
   connect (ui->spinBox_z1, SIGNAL(editingFinished()), this, SLOT (conditFilter()));
   connect (ui->spinBox_z2, SIGNAL(editingFinished()), this, SLOT (conditFilter()));  
 
+
+  connect (ui->horizontalSlider_r, SIGNAL (valueChanged (int)), this, SLOT (rSliderValueChanged (int)));
+  connect (ui->horizontalSlider_p, SIGNAL (valueChanged (int)), this, SLOT (pSliderValueChanged (int)));
+  connect (ui->horizontalSlider_y, SIGNAL (valueChanged (int)), this, SLOT (ySliderValueChanged (int)));
+  connect (ui->spinBox_r, SIGNAL(valueChanged(int)), this, SLOT(r_updateLabelValue(int)));
+  connect (ui->spinBox_p, SIGNAL(valueChanged(int)), this, SLOT(p_updateLabelValue(int)));
+  connect (ui->spinBox_y, SIGNAL(valueChanged(int)), this, SLOT(y_updateLabelValue(int)));
+
+  connect (ui->horizontalSlider_r, SIGNAL (sliderReleased ()), this, SLOT (rotate_UI ()));
+  connect (ui->horizontalSlider_p, SIGNAL (sliderReleased ()), this, SLOT (rotate_UI ()));
+  connect (ui->horizontalSlider_y, SIGNAL (sliderReleased ()), this, SLOT (rotate_UI ()));
+  connect (ui->spinBox_r, SIGNAL(editingFinished()), this, SLOT (rotate_UI()));
+  connect (ui->spinBox_p, SIGNAL(editingFinished()), this, SLOT (rotate_UI()));
+  connect (ui->spinBox_y, SIGNAL(editingFinished()), this, SLOT (rotate_UI()));
+
   connect (ui->pushButton_save,  SIGNAL (clicked ()), this, SLOT (saveButtonPressed ()));     
   connect (ui->pushButton_load,  SIGNAL (clicked ()), this, SLOT (loadButtonPressed()));
 }
 void PCLViewer::initial()
 { 
-  x1 = -0.5;  x2 = 0.5;  y1 = -0.4;  y2 = 0.25;  z1 = 0.0;  z2 = 1.2;  // The default value   
+  x1 = -2.0;  x2 = 2;  y1 = -2.0;  y2 = 2;  z1 = 0.0;  z2 = 3;  // The default value   
+  roll = 0;  pitch = 0; yaw = 0;
   cloudin.reset (new PointCloudT); // Setup the cloud pointer
   cloudout.reset (new PointCloudT); 
   temp.reset(new PointCloudT); 
@@ -65,6 +81,9 @@ void PCLViewer::initial()
 	viewer->setBackgroundColor(0, 0, 0, v2);
   viewer->addText("After cond", 10, 10, "v2 text", v2);  	
   viewer->addPointCloud(cloudin, "v2", v2);	
+
+  viewer->addCoordinateSystem (2.5, "axis", v1);
+
   ui->qvtkWidget->update ();
 
   /*
@@ -89,6 +108,17 @@ void PCLViewer::viewPair()
   
 }
 
+
+Eigen::Matrix3d PCLViewer::euler2RotationMatrix(double roll, double pitch, double yaw)
+{
+    Eigen::AngleAxisd rollAngle(roll, Eigen::Vector3d::UnitX());
+    Eigen::AngleAxisd pitchAngle(pitch, Eigen::Vector3d::UnitY());
+    Eigen::AngleAxisd yawAngle(yaw, Eigen::Vector3d::UnitZ());
+
+    Eigen::Quaterniond q = yawAngle*pitchAngle*rollAngle;
+    Eigen::Matrix3d r = q.matrix();
+    return r;
+}
 
 void PCLViewer::conditFilter()
 {
@@ -126,15 +156,28 @@ void PCLViewer::conditFilter()
   }
   
 }
-//voxelFilter(cloudin,cloudout,leafsize)
-//{
+void  PCLViewer::rotate_UI()
+{
+  //Eigen::Matrix3d rotation_cal = euler2RotationMatrix(roll, pitch, yaw);
+  //Eigen::Matrix4f trans = Eigen::Matrix4f::Identity(); 
+  Eigen::Affine3f trans = Eigen::Affine3f::Identity();
+  trans.rotate(Eigen::AngleAxisf (roll, Eigen::Vector3f::UnitX()));
+  trans.rotate(Eigen::AngleAxisf (pitch, Eigen::Vector3f::UnitY()));
+  trans.rotate(Eigen::AngleAxisf (yaw, Eigen::Vector3f::UnitZ())); 
+  
+  pcl::transformPointCloud(*cloudin, *cloudin, trans);
+  std::cout<<trans.matrix()<<endl;
+  viewer->removePointCloud("v1");
+  PointCloudColorHandlerRGBField<PointT> rgb1(cloudin);  
+  viewer->addPointCloud<PointT>(cloudin, rgb1, "v1", v1);
+  ui->qvtkWidget->update ();
 
-//}
+}
 
 void  PCLViewer::loadButtonPressed ()
 {
      // You might want to change "/home/" if you're not on an *nix platform
-  QString filename = QFileDialog::getOpenFileName (this, tr ("Open point cloud"), "/home/", tr ("Point cloud data (*.pcd *.ply)"));
+  QString filename = QFileDialog::getOpenFileName (this, tr ("Open point cloud"), "/home/cbc/图片/raw实验数据/1122/", tr ("Point cloud data (*.pcd *.ply)"));
 
   PCL_INFO("File chosen: %s\n", filename.toStdString ().c_str ());
   PointCloudT::Ptr cloud_tmp (new PointCloudT);
@@ -182,13 +225,13 @@ void  PCLViewer::saveButtonPressed ()
 
   int return_status;
   if (filename.endsWith (".pcd", Qt::CaseInsensitive))
-    return_status = pcl::io::savePCDFileBinary (filename.toStdString (), *cloudout);
+    return_status = pcl::io::savePCDFile (filename.toStdString (), *cloudout);
   else if (filename.endsWith (".ply", Qt::CaseInsensitive))
     return_status = pcl::io::savePLYFileBinary (filename.toStdString (), *cloudout);
   else
   {
     filename.append(".pcd");
-    return_status = pcl::io::savePCDFileBinary (filename.toStdString (), *cloudout);
+    return_status = pcl::io::savePCDFile(filename.toStdString (), *cloudout);
   }
 
   if (return_status != 0)
@@ -266,6 +309,34 @@ void PCLViewer::z2SliderValueChanged (int value)
   z2 = value/100.0;
   printf ("SliderValueChanged: [ %f | %f | %f | %f | %f | %f ]\n", x1, x2, y1, y2, z1, z2);
 }
+
+void  PCLViewer::rSliderValueChanged (int value)
+{
+  roll = value/180.0*M_PI;
+}
+void  PCLViewer::pSliderValueChanged (int value)
+{
+  pitch = value/180.0*M_PI;
+}
+void  PCLViewer::ySliderValueChanged (int value)
+{
+  yaw = value/180.0*M_PI;
+}
+
+void  PCLViewer::r_updateLabelValue(int value)
+{
+  //double doublevalue = value/100.0;
+  ui->label_r->setText(QString::number(value));
+}
+void  PCLViewer::p_updateLabelValue(int value)
+{
+  ui->label_p->setText(QString::number(value));
+}
+void  PCLViewer::y_updateLabelValue(int value)
+{
+  ui->label_y->setText(QString::number(value));
+}
+
 
 PCLViewer::~PCLViewer ()
 {
