@@ -75,12 +75,12 @@ void RGBSegmentation::initial()
     viewer->initCameraParameters();
     
     viewer->createViewPort(0.0, 0.0, 0.5, 1.0, v1);
-    viewer->setBackgroundColor(0, 0, 0, v1);
-    viewer->addText("Before segmentation", 10, 10, "v1 text", v1);
+    viewer->setBackgroundColor(255, 255, 255, v1);
+    viewer->addText("Before segmentation", 10, 10, 20,0,0,0,"v1 text", v1);
     
     viewer->createViewPort(0.5, 0.0, 1.0, 1.0, v2);
-    viewer->setBackgroundColor(0, 0, 0, v2);
-    viewer->addText("After segmentation", 10, 10, "v2 text", v2);
+    viewer->setBackgroundColor(255, 255, 255, v2);
+    viewer->addText("After segmentation", 10, 10, 20,0,0,0,"v2 text", v2);
 
     viewer->addCoordinateSystem (1.0, "axis", v1);
 
@@ -542,7 +542,7 @@ void RGBSegmentation::valueChanged2(int value)
 void RGBSegmentation::updateLabelValue(int value)
 {
     double doublevalue = value/100.0;
-    ui->label_num->setText(QString::number(doublevalue, 'f', 2));
+    //ui->label_num->setText(QString::number(doublevalue, 'f', 2));
 }
 
 //rotate and translation

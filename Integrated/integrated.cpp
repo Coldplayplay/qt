@@ -84,6 +84,7 @@ void Integrated::initial()
       cloudout2.reset (new PointCloudT);
       cloudout3.reset (new PointCloudT);
       temp.reset(new PointCloudT);
+      initial_temp.reset(new PointCloudT);
       viewer.reset (new pcl::visualization::PCLVisualizer ("viewer", false));
       v1=0;v2=0;v3=0;v4=0;
       // Set up the QVTK window
@@ -93,23 +94,23 @@ void Integrated::initial()
       viewer->initCameraParameters();
 
       viewer->createViewPort(0.0, 0.5, 0.5, 1.0, v1);
-      viewer->setBackgroundColor(0, 0, 0, v1);
-      viewer->addText("Raw", 10, 10, "v1 text", v1);
+      viewer->setBackgroundColor(255, 255, 255, v1);
+      viewer->addText("Raw", 10, 10, 20,0,0,0,"v1 text", v1);
       viewer->addPointCloud(cloudin, "v1", v1);
 
       viewer->createViewPort(0.5, 0.5, 1.0, 1.0, v2);
-      viewer->setBackgroundColor(0, 0, 0, v2);
-      viewer->addText("After cond", 10, 10, "v2 text", v2);
+      viewer->setBackgroundColor(255, 255, 255, v2);
+      viewer->addText("After cond", 10, 10, 20,0,0,0,"v2 text", v2);
       viewer->addPointCloud(cloudin, "v2", v2);
 
       viewer->createViewPort(0.0, 0.0, 0.5, 0.5, v3);
-      viewer->setBackgroundColor(0, 0, 0, v3);
-      viewer->addText("After statistic", 10, 10, "v3 text", v3);
+      viewer->setBackgroundColor(255, 255, 255, v3);
+      viewer->addText("After statistic", 10, 10, 20,0,0,0,"v3 text", v3);
       viewer->addPointCloud(cloudin, "v3", v3);
 
       viewer->createViewPort(0.5, 0.0, 1.0, 0.5, v4);
-      viewer->setBackgroundColor(0, 0, 0, v4);
-      viewer->addText("After voxel", 10, 10, "v4 text", v4);
+      viewer->setBackgroundColor(255, 255, 255, v4);
+      viewer->addText("After voxel", 10, 10, 20,0,0,0,"v4 text", v4);
       viewer->addPointCloud(cloudin, "v4", v4);
 
 
@@ -130,9 +131,9 @@ void Integrated::viewPair()
   PointCloudColorHandlerRGBField<PointT> rgb3(cloudin);
   PointCloudColorHandlerRGBField<PointT> rgb4(cloudin);
   viewer->addPointCloud<PointT>(cloudin, rgb1, "v1", v1);
-  viewer->addPointCloud<PointT>(cloudin, rgb2, "v2", v2);
-  viewer->addPointCloud<PointT>(cloudin, rgb3, "v3", v3);
-  viewer->addPointCloud<PointT>(cloudin, rgb4, "v4", v4);
+  viewer->addPointCloud<PointT>(initial_temp, rgb2, "v2", v2);
+  viewer->addPointCloud<PointT>(initial_temp, rgb3, "v3", v3);
+  viewer->addPointCloud<PointT>(initial_temp, rgb4, "v4", v4);
   viewer->resetCamera ();
   ui->qvtkWidget->update ();
 
@@ -178,7 +179,17 @@ void Integrated::conditFilter()
         condrem.setInputCloud (cloudin);
     condrem.setKeepOrganized(true);
     condrem.filter (*cloudout1);
-    pcl::copyPointCloud (*cloudout1, *cloudout);
+
+    if (cloudout1->is_dense)
+      pcl::copyPointCloud (*cloudout1, *cloudout);
+    else
+    {
+      PCL_WARN("Cloud is not dense! Non finite points will be removed\n");
+      std::vector<int> vec;
+      pcl::removeNaNFromPointCloud (*cloudout1, *cloudout1, vec);
+      pcl::copyPointCloud (*cloudout1, *cloudout);
+    }
+
 
     viewer->removePointCloud("v2");
     PointCloudColorHandlerRGBField<PointT> rgb2(cloudout1);
@@ -276,7 +287,16 @@ void Integrated::statisticFilter()
     sor.setMeanK (MeanK);
     sor.setStddevMulThresh (StddevMulThresh);
     sor.filter (*cloudout2);
-    pcl::copyPointCloud (*cloudout2, *cloudout);
+    if (cloudout2->is_dense)
+      pcl::copyPointCloud (*cloudout2, *cloudout);
+    else
+    {
+      PCL_WARN("Cloud is not dense! Non finite points will be removed\n");
+      std::vector<int> vec;
+      pcl::removeNaNFromPointCloud (*cloudout2, *cloudout2, vec);
+      pcl::copyPointCloud (*cloudout2, *cloudout);
+    }
+
 
     std::cout<<"离群点去除前，点云数目："<<cloudout1->points.size()<<endl;
     std::cout<<"离群点去除后，点云数目："<<cloudout2->points.size()<<endl;
@@ -307,7 +327,15 @@ void Integrated::exectButtonPressed()
     sor.setInputCloud (cloudout2);
     sor.setLeafSize (lx, ly, lz);
     sor.filter (*cloudout3);
-    pcl::copyPointCloud (*cloudout3, *cloudout);
+    if (cloudout3->is_dense)
+      pcl::copyPointCloud (*cloudout3, *cloudout);
+    else
+    {
+      PCL_WARN("Cloud is not dense! Non finite points will be removed\n");
+      std::vector<int> vec;
+      pcl::removeNaNFromPointCloud (*cloudout3, *cloudout3, vec);
+      pcl::copyPointCloud (*cloudout3, *cloudout);
+    }
 
     std::cout<<"降采样前，点云数目："<<cloudout2->points.size()<<endl;
     std::cout<<"降采样后，点云数目："<<cloudout3->points.size()<<endl;
@@ -402,7 +430,7 @@ void  Integrated::loadButtonPressed ()
     pcl::removeNaNFromPointCloud (*cloud_tmp, *cloudin, vec);
   }
   //*cloudout = *cloudin;
-  //pcl::copyPointCloud(*cloudin,*cloudout);
+  pcl::copyPointCloud(*cloudin,*cloudout);
 
   viewPair();
 

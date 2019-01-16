@@ -23,6 +23,11 @@
       <height>26</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <pointsize>16</pointsize>
+     </font>
+    </property>
     <property name="focusPolicy">
      <enum>Qt::ClickFocus</enum>
     </property>
@@ -38,22 +43,34 @@
      <rect>
       <x>30</x>
       <y>310</y>
-      <width>131</width>
+      <width>151</width>
       <height>17</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <pointsize>16</pointsize>
+     </font>
+    </property>
     <property name="text">
-     <string>DistanceThreshold</string>
+     <string>Distance</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_2">
     <property name="geometry">
      <rect>
-      <x>80</x>
-      <y>260</y>
-      <width>151</width>
-      <height>17</height>
+      <x>50</x>
+      <y>236</y>
+      <width>221</width>
+      <height>41</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>18</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
     </property>
     <property name="text">
      <string>RGB-Segmentation</string>
@@ -68,8 +85,13 @@
       <height>17</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <pointsize>16</pointsize>
+     </font>
+    </property>
     <property name="text">
-     <string>PointColorThreshold</string>
+     <string>PointColor</string>
     </property>
    </widget>
    <widget class="QSpinBox" name="spinBox_2">
@@ -80,6 +102,11 @@
       <width>61</width>
       <height>26</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>16</pointsize>
+     </font>
     </property>
     <property name="focusPolicy">
      <enum>Qt::ClickFocus</enum>
@@ -97,11 +124,16 @@
       <x>30</x>
       <y>470</y>
       <width>161</width>
-      <height>17</height>
+      <height>31</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <pointsize>16</pointsize>
+     </font>
+    </property>
     <property name="text">
-     <string>RegionColorThreshold</string>
+     <string>RegionColor</string>
     </property>
    </widget>
    <widget class="QSpinBox" name="spinBox_3">
@@ -112,6 +144,11 @@
       <width>61</width>
       <height>26</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>16</pointsize>
+     </font>
     </property>
     <property name="focusPolicy">
      <enum>Qt::ClickFocus</enum>
@@ -127,10 +164,15 @@
     <property name="geometry">
      <rect>
       <x>30</x>
-      <y>560</y>
-      <width>131</width>
-      <height>17</height>
+      <y>546</y>
+      <width>161</width>
+      <height>31</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>16</pointsize>
+     </font>
     </property>
     <property name="text">
      <string>MinClusterSize</string>
@@ -144,6 +186,11 @@
       <width>61</width>
       <height>26</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>16</pointsize>
+     </font>
     </property>
     <property name="focusPolicy">
      <enum>Qt::ClickFocus</enum>
@@ -169,10 +216,15 @@
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>860</y>
+      <y>844</y>
       <width>111</width>
-      <height>25</height>
+      <height>41</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>17</pointsize>
+     </font>
     </property>
     <property name="text">
      <string>Load</string>
@@ -183,9 +235,14 @@
      <rect>
       <x>160</x>
       <y>900</y>
-      <width>89</width>
-      <height>25</height>
+      <width>151</width>
+      <height>41</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>17</pointsize>
+     </font>
     </property>
     <property name="text">
      <string>Save-wholes</string>
@@ -195,10 +252,15 @@
     <property name="geometry">
      <rect>
       <x>160</x>
-      <y>860</y>
-      <width>89</width>
-      <height>25</height>
+      <y>844</y>
+      <width>151</width>
+      <height>41</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>17</pointsize>
+     </font>
     </property>
     <property name="text">
      <string>Save-singles</string>
@@ -207,11 +269,16 @@
    <widget class="QCheckBox" name="checkBox_cube">
     <property name="geometry">
      <rect>
-      <x>190</x>
+      <x>140</x>
       <y>600</y>
-      <width>111</width>
+      <width>151</width>
       <height>22</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>16</pointsize>
+     </font>
     </property>
     <property name="text">
      <string>show_cube</string>
@@ -222,9 +289,16 @@
      <rect>
       <x>90</x>
       <y>40</y>
-      <width>101</width>
+      <width>171</width>
       <height>31</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>18</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
     </property>
     <property name="text">
      <string>StatisFilter</string>
@@ -235,9 +309,14 @@
      <rect>
       <x>30</x>
       <y>110</y>
-      <width>71</width>
+      <width>121</width>
       <height>20</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>16</pointsize>
+     </font>
     </property>
     <property name="text">
      <string>setMeanK</string>
@@ -251,6 +330,11 @@
       <width>61</width>
       <height>26</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>16</pointsize>
+     </font>
     </property>
     <property name="minimum">
      <number>-500</number>
@@ -271,6 +355,11 @@
       <height>26</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <pointsize>16</pointsize>
+     </font>
+    </property>
     <property name="maximum">
      <number>1000</number>
     </property>
@@ -283,25 +372,17 @@
      <rect>
       <x>30</x>
       <y>180</y>
-      <width>151</width>
-      <height>20</height>
+      <width>141</width>
+      <height>41</height>
      </rect>
     </property>
-    <property name="text">
-     <string>setStddevMulThresh</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_num">
-    <property name="geometry">
-     <rect>
-      <x>270</x>
-      <y>180</y>
-      <width>31</width>
-      <height>17</height>
-     </rect>
+    <property name="font">
+     <font>
+      <pointsize>16</pointsize>
+     </font>
     </property>
     <property name="text">
-     <string>1.0</string>
+     <string>setStddev</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_21">
@@ -386,10 +467,10 @@
     </property>
     <property name="font">
      <font>
-      <pointsize>16</pointsize>
-      <weight>50</weight>
+      <pointsize>18</pointsize>
+      <weight>75</weight>
       <italic>false</italic>
-      <bold>false</bold>
+      <bold>true</bold>
      </font>
     </property>
     <property name="text">
@@ -404,6 +485,11 @@
       <width>71</width>
       <height>27</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>16</pointsize>
+     </font>
     </property>
     <property name="minimum">
      <number>-360</number>
@@ -426,6 +512,11 @@
       <width>71</width>
       <height>27</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>16</pointsize>
+     </font>
     </property>
     <property name="minimum">
      <number>-360</number>
@@ -469,6 +560,11 @@
       <width>71</width>
       <height>27</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>16</pointsize>
+     </font>
     </property>
     <property name="minimum">
      <number>-360</number>
@@ -535,8 +631,13 @@
       <x>60</x>
       <y>900</y>
       <width>71</width>
-      <height>27</height>
+      <height>31</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>16</pointsize>
+     </font>
     </property>
     <property name="minimum">
      <number>1</number>
@@ -559,6 +660,11 @@
       <width>31</width>
       <height>31</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>14</pointsize>
+     </font>
     </property>
     <property name="text">
      <string>dir</string>

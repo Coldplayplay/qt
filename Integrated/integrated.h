@@ -95,6 +95,7 @@ protected:
     PointCloudT::Ptr cloudout2;
     PointCloudT::Ptr cloudout3;
     PointCloudT::Ptr temp;
+    PointCloudT::Ptr initial_temp;
 
     bool rotate_flag;
     double x1,x2,y1,y2,z1,z2;//conditional filter params

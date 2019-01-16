@@ -10,6 +10,11 @@
     <height>876</height>
    </rect>
   </property>
+  <property name="font">
+   <font>
+    <pointsize>17</pointsize>
+   </font>
+  </property>
   <property name="windowTitle">
    <string>Integrated</string>
   </property>
@@ -39,6 +44,11 @@
       <height>61</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <pointsize>17</pointsize>
+     </font>
+    </property>
     <property name="text">
      <string>load</string>
     </property>
@@ -58,6 +68,11 @@
       <height>61</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <pointsize>17</pointsize>
+     </font>
+    </property>
     <property name="text">
      <string>save</string>
     </property>
@@ -70,6 +85,11 @@
       <width>251</width>
       <height>171</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>15</pointsize>
+     </font>
     </property>
     <property name="styleSheet">
      <string notr="true">border-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(0, 0, 0, 255), stop:1 rgba(255, 255, 255, 255));</string>
@@ -88,7 +108,7 @@
      </property>
      <property name="font">
       <font>
-       <pointsize>12</pointsize>
+       <pointsize>15</pointsize>
       </font>
      </property>
      <property name="text">
@@ -106,7 +126,7 @@
      </property>
      <property name="font">
       <font>
-       <pointsize>11</pointsize>
+       <pointsize>15</pointsize>
       </font>
      </property>
      <property name="text">
@@ -124,7 +144,7 @@
      </property>
      <property name="font">
       <font>
-       <pointsize>12</pointsize>
+       <pointsize>15</pointsize>
       </font>
      </property>
      <property name="text">
@@ -142,7 +162,7 @@
      </property>
      <property name="font">
       <font>
-       <pointsize>12</pointsize>
+       <pointsize>15</pointsize>
       </font>
      </property>
      <property name="text">
@@ -154,9 +174,14 @@
       <rect>
        <x>50</x>
        <y>120</y>
-       <width>69</width>
+       <width>81</width>
        <height>27</height>
       </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>16</pointsize>
+      </font>
      </property>
      <property name="maximum">
       <double>10.000000000000000</double>
@@ -173,9 +198,14 @@
       <rect>
        <x>50</x>
        <y>80</y>
-       <width>69</width>
+       <width>81</width>
        <height>27</height>
       </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>16</pointsize>
+      </font>
      </property>
      <property name="maximum">
       <double>10.000000000000000</double>
@@ -192,9 +222,14 @@
       <rect>
        <x>50</x>
        <y>40</y>
-       <width>69</width>
+       <width>81</width>
        <height>27</height>
       </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>16</pointsize>
+      </font>
      </property>
      <property name="maximum">
       <double>10.000000000000000</double>
@@ -216,6 +251,11 @@
       <height>241</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <pointsize>15</pointsize>
+     </font>
+    </property>
     <property name="styleSheet">
      <string notr="true">border-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(0, 0, 0, 255), stop:1 rgba(255, 255, 255, 255));</string>
     </property>
@@ -225,7 +265,7 @@
     <widget class="QSlider" name="horizontalSlider_x1">
      <property name="geometry">
       <rect>
-       <x>90</x>
+       <x>110</x>
        <y>60</y>
        <width>121</width>
        <height>29</height>
@@ -250,7 +290,7 @@
     <widget class="QSlider" name="horizontalSlider_z2">
      <property name="geometry">
       <rect>
-       <x>340</x>
+       <x>360</x>
        <y>180</y>
        <width>121</width>
        <height>29</height>
@@ -272,7 +312,7 @@
     <widget class="QSlider" name="horizontalSlider_y1">
      <property name="geometry">
       <rect>
-       <x>90</x>
+       <x>110</x>
        <y>120</y>
        <width>121</width>
        <height>29</height>
@@ -302,7 +342,7 @@
      </property>
      <property name="font">
       <font>
-       <pointsize>12</pointsize>
+       <pointsize>15</pointsize>
        <weight>50</weight>
        <italic>false</italic>
        <bold>false</bold>
@@ -323,7 +363,7 @@
      </property>
      <property name="font">
       <font>
-       <pointsize>12</pointsize>
+       <pointsize>15</pointsize>
        <weight>50</weight>
        <italic>false</italic>
        <bold>false</bold>
@@ -344,7 +384,7 @@
      </property>
      <property name="font">
       <font>
-       <pointsize>12</pointsize>
+       <pointsize>15</pointsize>
        <weight>50</weight>
        <italic>false</italic>
        <bold>false</bold>
@@ -365,7 +405,7 @@
      </property>
      <property name="font">
       <font>
-       <pointsize>12</pointsize>
+       <pointsize>15</pointsize>
        <weight>50</weight>
        <italic>false</italic>
        <bold>false</bold>
@@ -378,7 +418,7 @@
     <widget class="QSlider" name="horizontalSlider_x2">
      <property name="geometry">
       <rect>
-       <x>340</x>
+       <x>360</x>
        <y>60</y>
        <width>121</width>
        <height>29</height>
@@ -400,7 +440,7 @@
     <widget class="QSlider" name="horizontalSlider_y2">
      <property name="geometry">
       <rect>
-       <x>340</x>
+       <x>360</x>
        <y>120</y>
        <width>121</width>
        <height>29</height>
@@ -422,7 +462,7 @@
     <widget class="QSlider" name="horizontalSlider_z1">
      <property name="geometry">
       <rect>
-       <x>90</x>
+       <x>110</x>
        <y>180</y>
        <width>121</width>
        <height>29</height>
@@ -452,7 +492,7 @@
      </property>
      <property name="font">
       <font>
-       <pointsize>12</pointsize>
+       <pointsize>15</pointsize>
        <weight>50</weight>
        <italic>false</italic>
        <bold>false</bold>
@@ -473,7 +513,7 @@
      </property>
      <property name="font">
       <font>
-       <pointsize>12</pointsize>
+       <pointsize>15</pointsize>
        <weight>50</weight>
        <italic>false</italic>
        <bold>false</bold>
@@ -488,9 +528,14 @@
       <rect>
        <x>270</x>
        <y>180</y>
-       <width>69</width>
+       <width>81</width>
        <height>27</height>
       </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>16</pointsize>
+      </font>
      </property>
      <property name="decimals">
       <number>2</number>
@@ -513,9 +558,14 @@
       <rect>
        <x>270</x>
        <y>120</y>
-       <width>69</width>
+       <width>81</width>
        <height>27</height>
       </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>16</pointsize>
+      </font>
      </property>
      <property name="decimals">
       <number>2</number>
@@ -538,9 +588,14 @@
       <rect>
        <x>270</x>
        <y>60</y>
-       <width>69</width>
+       <width>81</width>
        <height>27</height>
       </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>16</pointsize>
+      </font>
      </property>
      <property name="decimals">
       <number>2</number>
@@ -563,9 +618,14 @@
       <rect>
        <x>20</x>
        <y>180</y>
-       <width>69</width>
+       <width>81</width>
        <height>27</height>
       </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>16</pointsize>
+      </font>
      </property>
      <property name="decimals">
       <number>2</number>
@@ -588,9 +648,14 @@
       <rect>
        <x>20</x>
        <y>120</y>
-       <width>69</width>
+       <width>81</width>
        <height>27</height>
       </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>16</pointsize>
+      </font>
      </property>
      <property name="decimals">
       <number>2</number>
@@ -613,9 +678,14 @@
       <rect>
        <x>20</x>
        <y>60</y>
-       <width>69</width>
+       <width>81</width>
        <height>27</height>
       </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>16</pointsize>
+      </font>
      </property>
      <property name="decimals">
       <number>2</number>
@@ -643,6 +713,11 @@
       <height>171</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <pointsize>15</pointsize>
+     </font>
+    </property>
     <property name="styleSheet">
      <string notr="true">border-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(0, 0, 0, 255), stop:1 rgba(255, 255, 255, 255));</string>
     </property>
@@ -654,13 +729,13 @@
       <rect>
        <x>10</x>
        <y>50</y>
-       <width>71</width>
+       <width>101</width>
        <height>20</height>
       </rect>
      </property>
      <property name="font">
       <font>
-       <pointsize>12</pointsize>
+       <pointsize>15</pointsize>
       </font>
      </property>
      <property name="text">
@@ -678,7 +753,7 @@
      </property>
      <property name="font">
       <font>
-       <pointsize>12</pointsize>
+       <pointsize>15</pointsize>
       </font>
      </property>
      <property name="text">
@@ -690,9 +765,14 @@
       <rect>
        <x>120</x>
        <y>110</y>
-       <width>69</width>
+       <width>81</width>
        <height>27</height>
       </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>16</pointsize>
+      </font>
      </property>
      <property name="maximum">
       <double>10.000000000000000</double>
@@ -709,9 +789,14 @@
       <rect>
        <x>120</x>
        <y>50</y>
-       <width>69</width>
+       <width>81</width>
        <height>27</height>
       </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>16</pointsize>
+      </font>
      </property>
      <property name="maximum">
       <double>100.000000000000000</double>
@@ -732,6 +817,11 @@
       <width>311</width>
       <height>131</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>15</pointsize>
+     </font>
     </property>
     <property name="styleSheet">
      <string notr="true">border-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(0, 0, 0, 255), stop:1 rgba(255, 255, 255, 255));</string>
@@ -775,7 +865,7 @@
      </property>
      <property name="font">
       <font>
-       <pointsize>12</pointsize>
+       <pointsize>15</pointsize>
        <weight>50</weight>
        <italic>false</italic>
        <bold>false</bold>
@@ -790,9 +880,14 @@
       <rect>
        <x>200</x>
        <y>90</y>
-       <width>51</width>
+       <width>61</width>
        <height>27</height>
       </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>16</pointsize>
+      </font>
      </property>
      <property name="minimum">
       <number>-360</number>
@@ -818,7 +913,7 @@
      </property>
      <property name="font">
       <font>
-       <pointsize>12</pointsize>
+       <pointsize>15</pointsize>
        <weight>50</weight>
        <italic>false</italic>
        <bold>false</bold>
@@ -833,9 +928,14 @@
       <rect>
        <x>200</x>
        <y>30</y>
-       <width>51</width>
+       <width>61</width>
        <height>27</height>
       </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>16</pointsize>
+      </font>
      </property>
      <property name="minimum">
       <number>-360</number>
@@ -855,9 +955,14 @@
       <rect>
        <x>200</x>
        <y>60</y>
-       <width>51</width>
+       <width>61</width>
        <height>27</height>
       </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>16</pointsize>
+      </font>
      </property>
      <property name="minimum">
       <number>-360</number>
@@ -883,7 +988,7 @@
      </property>
      <property name="font">
       <font>
-       <pointsize>12</pointsize>
+       <pointsize>15</pointsize>
        <weight>50</weight>
        <italic>false</italic>
        <bold>false</bold>

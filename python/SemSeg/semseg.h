@@ -5,6 +5,8 @@
 #include <fstream>
 #include <string>
 #include <vector>
+#include <iomanip>
+#include <Eigen/Core>
 // Qt
 #include <QMainWindow>
 #include <QFileDialog>
@@ -17,6 +19,9 @@
 #include <pcl/io/obj_io.h>
 #include <pcl/io/vtk_lib_io.h>
 #include <pcl/common/common.h>
+#include <pcl/common/pca.h>
+#include <pcl/search/search.h>
+#include <pcl/search/kdtree.h>
 #include <pcl/filters/filter.h>
 #include <pcl/filters/passthrough.h>
 #include <pcl/filters/voxel_grid.h>
@@ -30,12 +35,20 @@
 
 // python
 #include <boost/python.hpp>
-using namespace std;
-using namespace boost::python;
+
+//opencv
+#include <opencv2/opencv.hpp>
+#include <opencv2/core/eigen.hpp>
+
 
 typedef pcl::PointXYZRGB PointT;
 typedef pcl::PointCloud<PointT> PointCloudT;
+typedef pcl::PointXYZRGBL PointLT;
+typedef pcl::PointCloud<PointLT> PointCloudLT;
+
 using namespace std;
+using namespace cv;
+using namespace boost::python;
 using pcl::visualization::PointCloudColorHandlerCustom;
 using pcl::visualization::PointCloudColorHandlerRGBField;
 
@@ -54,24 +67,48 @@ public:
     ~SemSeg();
 
     void initial();
-    void viewpair();
+    void viewPair();
 
 protected:
     int v1, v2;
     boost::shared_ptr<pcl::visualization::PCLVisualizer> viewer;
-    PointCloudT::Ptr cloud1;
-    PointCloudT::Ptr cloud2;
+    PointCloudT::Ptr cloud1;//输入
+    PointCloudT::Ptr cloud3;//显示    
+    PointCloudLT::Ptr cloud2;//用于位姿估计
+    PointCloudT::Ptr cloud_tmp;
+
+    string xyz1,xyz2,xyz3;
+    string rpy1,rpy2,rpy3;
+
+    bool show_cube;
 
 
 public Q_SLOTS:
-    void obj_open();
+    void loadButtonPressed();
     void semsegButtonPressed();
+    void showButtonPressed();
+    void checkBox_cubeChanged(int value);
+    void poseButtonPressed();
+    void sendButtonPressed();
 
+    //void xyzlineEditValueChanged();
+    //void rpylineEditValueChanged();
+    //void iplineEditValueChanged();
+
+    void idSpinBoxValueChanged(QString value);
+    void ipLineEditValueChanged(QString value);
 
 private:
     Ui::SemSeg *ui;
+    QString filename;
+    string toBeSegFileName;
+    string segedFileName;
+    vector<Eigen::Quaternionf> xuan;
+    vector<Eigen::Vector3f> ping;
+
     void split(const string& src, const string& delim, vector<string>& dest);
-    void obj2pcd(string filename);
+    void obj2pcd();
+    void pcd2txt();
 };
 
 #endif // SEMSEG_H

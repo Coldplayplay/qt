@@ -14,9 +14,18 @@ include_directories (${PCL_INCLUDE_DIRS})
 link_directories    (${PCL_LIBRARY_DIRS})
 add_definitions     (${PCL_DEFINITIONS})
 
-set  (project_SOURCES src/main.cpp src/semseg.cpp)
-set  (project_HEADERS src/semseg.h)
-set  (project_FORMS   src/semseg.ui)
+#set(OpenCV_DIR /usr/local/opencv320/share/OpenCV)
+find_package(OpenCV REQUIRED)
+#include_directories(SYSTEM ${OpenCV_INCLUDE_DIRS} /usr/local/opencv320/include)
+#link_directories(${OpenCV_LIBRARY_DIRS} /usr/local/opencv320/lib)
+include_directories(${OpenCV_INCLUDE_DIRS})
+link_directories(${OpenCV_LIBRARY_DIRS})
+
+
+
+set  (project_SOURCES main.cpp semseg.cpp)
+set  (project_HEADERS semseg.h)
+set  (project_FORMS   semseg.ui)
 #set  (VTK_LIBRARIES   vtkRendering vtkGraphics vtkHybrid QVTK)
 
 QT5_WRAP_CPP (project_HEADERS_MOC   ${project_HEADERS})
@@ -33,6 +42,7 @@ ADD_EXECUTABLE  (main ${project_SOURCES}
 TARGET_LINK_LIBRARIES (main 
 ${QT_LIBRARIES} 
 ${PCL_LIBRARIES} 
+${OpenCV_LIBRARIES}
 #${VTK_LIBRARIES}
 
 ${Boost_LIBRARIES}
